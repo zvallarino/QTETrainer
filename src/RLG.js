@@ -1,8 +1,11 @@
-function RLG() {
+function RLG({gamesInput, setGamesInput}) {
   let alphabet = "abcdefghijklmnopqrstuvwxyz"
+  let randomLetter = alphabet[Math.floor(Math.random() * alphabet.length)]
+
+
   return (
     <div>
-      {alphabet[Math.floor(Math.random() * alphabet.length)]}
+    {randomLetter}
     </div>
   );
 }
