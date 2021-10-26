@@ -15,6 +15,7 @@ function GameLogic({selectedRoute}) {
   const [streakcounter, setStreakCounter] = useState(0)
   const [finalScore,setFinalScore] = useState(0)
   const [mistakes,setMistakes] = useState(0)
+  const [loopCounter, setLoopCounter] = useState(0)
 
   let alphabetz = "abcdefghijklmnopqrstuvwxyz"
 
@@ -57,8 +58,39 @@ function StreakCounterSayings(){
   useEffect(()=>{OnsetInterval()},[]);
 
   if(timeRemaining === 0){
-    setTimeRemaining(20);
-    } 
+    if (loopCounter === 0){
+      if (score >= 6) {
+        console.log("hello")
+        setLoopCounter(loopCounter => loopCounter + 1)
+        setFinalScore(finalScore + score)
+        setScore(0)
+        setTimeRemaining(20)
+      } else {setTimeRemaining(20)}
+    
+       } else if (loopCounter === 1) {
+         console.log("bye")
+         if (score >= 10) {
+          console.log("hello")
+          setLoopCounter(loopCounter => loopCounter + 1)
+          setFinalScore(finalScore + score)
+          setScore(0)
+          setTimeRemaining(20)
+        } else {setTimeRemaining(20)}
+         
+       }
+    // setTimeRemaining(20)
+  }
+    
+    // if (score >= 6)
+    // {alert ("Level 2") 
+    // setLoopCounter(loopCounter => loopCounter + 1)
+    // setFinalScore(finalScore + score)
+    // setScore(0)
+    // setStreakCounter(0)}
+    // else {console.log("you failed")
+    // 
+    
+    
 
   function RandomLetterGenerator1() {
     let randomLetterz = alphabetz[Math.floor(Math.random() * alphabetz.length)]
@@ -126,6 +158,10 @@ useEffect(()=>fourthTimingFunction(),[])
       {`This is the Mistakes: ${mistakes}`}
       <p></p>
       {`This is the Streak Counter: ${streakcounter}`}
+      <p></p>
+      {`This is the Final Score: ${finalScore}`}
+      <p></p>
+      {`This is the Loop Counter: ${loopCounter}`}
 
       <h4>{timeRemaining} Seconds Remaining</h4>
       <Generator gamesInput = {gamesInput} setGamesInput = {setGamesInput} />
