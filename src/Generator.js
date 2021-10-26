@@ -7,7 +7,6 @@ import React from "react"
 function Generator({gamesInput, setGamesInput}) {
   return (
     <div>
-        <RLG gamesInput = {gamesInput} setGamesInput = {setGamesInput} />
     </div>
   );
 }
