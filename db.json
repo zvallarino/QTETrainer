@@ -1,0 +1,14 @@
+{
+  "leaderboard": [
+    {
+      "id": 1,
+      "name": "Woody",
+      "highscore": 8
+    },
+    {
+      "id": 2,
+      "name": "Buzz Lightyear",
+      "highscore": 14
+    }
+  ]
+}

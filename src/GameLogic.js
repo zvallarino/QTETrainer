@@ -59,26 +59,53 @@ function StreakCounterSayings(){
 
   if(timeRemaining === 0){
     if (loopCounter === 0){
-      if (score >= 6) {
+      if (score >= 1) {
+        alert ("Level 2") 
         console.log("hello")
         setLoopCounter(loopCounter => loopCounter + 1)
         setFinalScore(finalScore + score)
         setScore(0)
-        setTimeRemaining(20)
+        setTimeRemaining(5)
       } else {setTimeRemaining(20)}
+        
     
        } else if (loopCounter === 1) {
          console.log("bye")
-         if (score >= 10) {
+         if (score >= 1) {
+          alert ("Level 3")
           console.log("hello")
           setLoopCounter(loopCounter => loopCounter + 1)
           setFinalScore(finalScore + score)
           setScore(0)
-          setTimeRemaining(20)
+          setTimeRemaining(5)
         } else {setTimeRemaining(20)}
          
+       } else if (loopCounter === 2) {
+        console.log("bye")
+        if (score >= 1) {
+         alert ("Level 4")
+         console.log("hello")
+         setLoopCounter(loopCounter => loopCounter + 1)
+         setFinalScore(finalScore + score)
+         setScore(0)
+         setTimeRemaining(5)
+       } else {setTimeRemaining(20)}
+
+       } else if (loopCounter === 3) {
+        console.log("bye")
+        if (score >= 1) {
+          alert ("Level 5")
+         console.log("hello")
+         setLoopCounter(loopCounter => loopCounter + 1)
+         setFinalScore(finalScore + score)
+         setScore(0)
+         setTimeRemaining(5)
+       } else {setTimeRemaining(20)} 
+      }
+       else {
+         alert (`You won! Your score is ${finalScore}`)
        }
-    // setTimeRemaining(20)
+  
   }
     
     // if (score >= 6)
