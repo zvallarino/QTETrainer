@@ -1,7 +1,6 @@
 function ArcadeMode() {
   return (
     <div>
-     Hello
     </div>
   );
 }
