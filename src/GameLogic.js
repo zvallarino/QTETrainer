@@ -2,7 +2,7 @@ import Generator from "./Generator.js"
 import React, { useState, useEffect } from "react"
 import DropDown from "./DropDown.js"
 
-function GameLogic() {
+function GameLogic({selectedRoute}) {
 
   const [userInput,setUserInput] = useState('')
   const [gamesInput, setGamesInput] = useState ('')
@@ -10,40 +10,40 @@ function GameLogic() {
   const [gamesInput3, setGamesInput3] = useState ('')
   const [gamesInput4, setGamesInput4] = useState ('')
   const [mainNumber, setMainNumber] = useState('z')
-  const [selectedRoute, setSelectedRoute] = useState('')
   const [timeRemaining, setTimeRemaining] = useState(20)
   const [score,setScore] = useState(0)
+  const [streakcounter, setStreakCounter] = useState(0)
+  const [finalScore,setFinalScore] = useState(0)
   const [mistakes,setMistakes] = useState(0)
 
-function gameFunction() {
-  if (mainNumber === userInput)
-  {
-    let alphabetY = "abcdefghijklmnopqrstuvwxyz"
-    let randomLetter = alphabetY[Math.floor(Math.random() * alphabetY.length)]
+  let alphabetz = "abcdefghijklmnopqrstuvwxyz"
+
+function gameFunction(cats) {
+  if (mainNumber.toUpperCase() === cats.toUpperCase())
+  {let alphabetY = "abcdefghijklmnopqrstuvwxyz"
+  let randomLetter = alphabetY[Math.floor(Math.random() * alphabetY.length)]
     console.log('correct')
     console.log(randomLetter)
     setMainNumber(randomLetter)
     setScore(score=>score +1)
-  }}
+    setStreakCounter(streakcounter=>streakcounter+1)
+  } else {
+    console.log('incorrect')
+    setMistakes(mistakes=>mistakes +1)
+    setStreakCounter(0)
+  } }
 
-gameFunction() 
-
-let alphabetz = "abcdefghijklmnopqrstuvwxyz"
-
-// function RouteSelectorHelper(){
-// if(selectedRoute === "Alphabetic"){
-//   console.log(selectedRoute)
-//   return "abcdefghijklmnopqrstuvwxyz"
-// } else if (selectedRoute === 'Numeric'){
-//   console.log(selectedRoute)
-//   return "0123456789"
-// } else {
-//   console.log(selectedRoute)
-//   return "`-=[];',./123456789abcdefghijklmnopqrstuvwxyz"}}
-
+function StreakCounterSayings(){
+  if (streakcounter === 5){
+    console.log('Doing Great')
+  } else if ( streakcounter === 10){
+    console.log('On Fire')
+  }
+}
 
   function handleChange(e){
     setUserInput(e.target.value.slice(-1))
+    gameFunction(e.target.value.slice(-1))
   }
   
   function onSetTimeRemaining(){
@@ -84,7 +84,7 @@ let alphabetz = "abcdefghijklmnopqrstuvwxyz"
   } 
 
 function timingFunction(){
-setInterval(()=>RandomLetterGenerator1(), 5000)
+setInterval(()=>RandomLetterGenerator1(), 8000)
 }
 
 useEffect(()=>timingFunction(),[])
@@ -96,13 +96,13 @@ function secondTimingFunction(){
 useEffect(()=>secondTimingFunction(),[])
 
 function thirdTimingFunction(){
-  setInterval(()=>RandomLetterGenerator3(), 2000)
+  setInterval(()=>RandomLetterGenerator3(), 1000)
 }
 
 useEffect(()=>thirdTimingFunction(),[])
 
 function fourthTimingFunction(){
-  setInterval(()=>RandomLetterGenerator4(), 2000)
+  setInterval(()=>RandomLetterGenerator4(), 500)
 }
 
 useEffect(()=>fourthTimingFunction(),[])
@@ -110,7 +110,7 @@ useEffect(()=>fourthTimingFunction(),[])
   
   
   return (
-    <div>
+    <div onKeyDown = {(e)=>console.log(e.target.value)} tabIndex = '0'>
       {`This is ${gamesInput}`}
       <p></p>
       {`This is ${gamesInput2}`}
@@ -119,17 +119,18 @@ useEffect(()=>fourthTimingFunction(),[])
       <p></p>
       {`This is ${gamesInput4}`}
       <p></p>
-      {`This is the Main Number: ${mainNumber}`}
+      {`This is the Main Input: ${mainNumber.toUpperCase()}`}
       <p></p>
       {`This is the Score: ${score}`}
       <p></p>
       {`This is the Mistakes: ${mistakes}`}
+      <p></p>
+      {`This is the Streak Counter: ${streakcounter}`}
 
       <h4>{timeRemaining} Seconds Remaining</h4>
       <Generator gamesInput = {gamesInput} setGamesInput = {setGamesInput} />
-      <DropDown selectedRoute = {selectedRoute} setSelectedRoute = {setSelectedRoute} />
       <label> Input
-      <input type="text" name="name" onChange = {handleChange} onKeyDown = {(e)=>console.log("hello")} value ={userInput} />
+      <input type="text" name="name" onChange = {handleChange} value ={userInput} />
       </label>
       </div>
   );
