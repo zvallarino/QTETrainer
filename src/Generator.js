@@ -1,6 +1,4 @@
-import NumberGenerator from "./NumberGenerator"
-import RLG from "./RLG"
-import RCG from "./RCG";
+
 import React from "react"
 
 
