@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react"
 import FinalScreen from "./FinalScreen.js"
 // import LosingScreen from "./LosingScreen.js"
 
-function GameLogic( {RouteSelector} ) {
+function GameLogic( {RouteSelector, setKillGame} ) {
 
   const [userInput,setUserInput] = useState('')
   const [gamesInput, setGamesInput] = useState ('')
@@ -65,44 +65,45 @@ function StreakCounterSayings(){
         setScore(0)
         setTimeRemaining(30)
       } else {
+        setKillGame(false)
         setTimeRemaining(20)
       }
-       } else if (loopCounter === 1) {
-         console.log("bye")
-         if (score >= 20) {
+      } else if (loopCounter === 1) {
+      if (score >= 20) {
           alert ("Level 3")
-          console.log("hello")
           setLoopCounter(loopCounter => loopCounter + 1)
           setFinalScore(finalScore + score)
           setScore(0)
           setTimeRemaining(30)
-        } else {setTimeRemaining(20)}
-         
-       } else if (loopCounter === 2) {
-        console.log("bye")
+        } else {
+          setKillGame(false)
+          setTimeRemaining(20)
+        }
+      } else if (loopCounter === 2) {
         if (score >= 40) {
-         alert ("Level 4")
-         console.log("hello")
-         setLoopCounter(loopCounter => loopCounter + 1)
-         setFinalScore(finalScore + score)
-         setScore(0)
-         setTimeRemaining(5)
-       } else {setTimeRemaining(20)}
+        alert ("Level 4")
+        setLoopCounter(loopCounter => loopCounter + 1)
+        setFinalScore(finalScore + score)
+        setScore(0)
+        setTimeRemaining(5)
+        } else {
+          setKillGame(false)
+          setTimeRemaining(20)}
 
-       } else if (loopCounter === 3) {
-        console.log("bye")
+        } else if (loopCounter === 3) {
         if (score >= 60) {
           alert ("Level 5")
-         console.log("hello")
-         setLoopCounter(loopCounter => loopCounter + 1)
-         setFinalScore(finalScore + score)
-         setScore(0)
-         setTimeRemaining(40)
-       } else {setTimeRemaining(20)} 
+        setLoopCounter(loopCounter => loopCounter + 1)
+        setFinalScore(finalScore + score)
+        setScore(0)
+        setTimeRemaining(40)
+      } else {
+        setKillGame(false)
+        setTimeRemaining(20)} 
       }
-       else {
-         alert (`You won! Your score is ${finalScore}`)
-       }
+      else {
+      alert (`You won! Your score is ${finalScore}`)
+      }
   }
     
   function RandomLetterGenerator1() {
@@ -137,8 +138,6 @@ useEffect(()=>timingFunction(),[])
       {`This is the Loop Counter: ${loopCounter}`}
 
       <h4>{timeRemaining} Seconds Remaining</h4>
-      <Generator gamesInput = {gamesInput} setGamesInput = {setGamesInput} />
-      <FinalScreen finalScore = {finalScore} />
       <label> Input
       <input type="text" name="name" onChange = {handleChange} value ={userInput} />
       </label>

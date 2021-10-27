@@ -15,6 +15,11 @@ function MainMenu() {
     setEndless((cats)=>!cats)
   }
 
+  function PageReload(e){
+    window.location.reload();
+    return false;
+  }
+
   return (
     <div>
       <button onClick = {SetterOfArcadeMode}>Arcade</button>
@@ -23,6 +28,7 @@ function MainMenu() {
       {Endless? <EndlessPath />: null}
       <button>How to</button>
       <button>Credits</button>
+      <button onClick ={PageReload}>Main Menu</button>
     </div>
   );
 }

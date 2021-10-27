@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react"
+import React, { useState, useEffect } from "react"
 import ArcadeMode from "./ArcadeMode"
 
 function LosingScreen() {
@@ -18,11 +18,13 @@ function LosingScreen() {
     setTryAgain(cats=>!cats)
   }
 
+  useEffect(()=>{OnsetIntervalLosing()},[]);
+
+
   if (timeDecreasing === 0){
     window.location.reload();
     return false;
   }
-
 
   return (
     <>
