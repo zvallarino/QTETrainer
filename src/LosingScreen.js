@@ -10,15 +10,17 @@ function LosingScreen() {
     setTimeDecreasing((timeRemaining)=>timeRemaining -1)
   }
 
-  function OnsetIntervalLosing(){
-    setInterval(()=>onSetTimeRemainingLosing(),1000)
-  }
 
   function setteroftryAgain(e){
     setTryAgain(cats=>!cats)
   }
 
-  useEffect(()=>{OnsetIntervalLosing()},[]);
+  useEffect(() => {
+    const timerID = setInterval(()=>{onSetTimeRemainingLosing()},1000);
+    return function cleanup(){
+      clearInterval(timerID)
+    }
+  }, []);
 
 
   if (timeDecreasing === 0){

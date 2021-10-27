@@ -3,11 +3,16 @@ import React, { useState, useEffect } from "react"
 import FinalScreen from "./FinalScreen.js"
 // import LosingScreen from "./LosingScreen.js"
 
-function GameLogic( {RouteSelector, setKillGame} ) {
+function GameLogic( {RouteSelector, setKillGame, setLosingScreenDecider} ) {
+  function randomFirstInput(){
+    let randomInput = RouteSelector
+      let firstInput = randomInput[Math.floor(Math.random() * randomInput.length)]
+      return firstInput
+  }
 
   const [userInput,setUserInput] = useState('')
   const [gamesInput, setGamesInput] = useState ('')
-  const [mainNumber, setMainNumber] = useState('z')
+  const [mainNumber, setMainNumber] = useState(randomFirstInput())
   const [timeRemaining, setTimeRemaining] = useState(20)
   const [score,setScore] = useState(0)
   const [streakcounter, setStreakCounter] = useState(0)
@@ -16,6 +21,8 @@ function GameLogic( {RouteSelector, setKillGame} ) {
   const [loopCounter, setLoopCounter] = useState(0)
 
   let alphabetz = "abcdefghijklmnopqrstuvwxyz"
+
+ 
 
 function gameFunction(cats) {
   if (mainNumber.toUpperCase() === cats.toUpperCase())
@@ -33,12 +40,14 @@ function gameFunction(cats) {
   } }
 
 function StreakCounterSayings(){
-  if (streakcounter === 5){
-    console.log('Doing Great')
+  if (streakcounter === 1){
+    // setScore(score => score + 1)
+   
   } else if ( streakcounter === 10){
     console.log('On Fire')
   }
 }
+// StreakCounterSayings()
 
   function handleChange(e){
     setUserInput(e.target.value.slice(-1))
@@ -66,6 +75,7 @@ function StreakCounterSayings(){
         setTimeRemaining(30)
       } else {
         setKillGame(false)
+        setLosingScreenDecider(false)
         setTimeRemaining(20)
       }
       } else if (loopCounter === 1) {
@@ -77,6 +87,7 @@ function StreakCounterSayings(){
           setTimeRemaining(30)
         } else {
           setKillGame(false)
+          setLosingScreenDecider(false)
           setTimeRemaining(20)
         }
       } else if (loopCounter === 2) {
@@ -88,6 +99,7 @@ function StreakCounterSayings(){
         setTimeRemaining(5)
         } else {
           setKillGame(false)
+          setLosingScreenDecider(true)
           setTimeRemaining(20)}
 
         } else if (loopCounter === 3) {
@@ -99,6 +111,7 @@ function StreakCounterSayings(){
         setTimeRemaining(40)
       } else {
         setKillGame(false)
+        setLosingScreenDecider(true)
         setTimeRemaining(20)} 
       }
       else {

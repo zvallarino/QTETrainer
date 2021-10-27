@@ -1,7 +1,7 @@
 function Settings() {
   return (
     <div>
-     Hello
+     <h1>LOL no</h1>
     </div>
   );
 }

@@ -8,10 +8,13 @@ function ArcadeMode() {
   const [NumericPress, setNumericPress] = useState(false)
   const [AllPress, setAllPress] = useState(false)
   const [RouteSelector, setSelectedRoute] = useState('0123456789')
+  const [displayOn, setDisplayOn] = useState ("none")
 
   function setterOfAlphabeticPress (e){
     SetAlphabeticPress(cats=>!cats)
     setterOfRoute1(e)
+    // e.target.remove()
+    e.target.style.display = displayOn
   }
 
   function setterOfNumericPress (e){
@@ -38,7 +41,7 @@ function ArcadeMode() {
 
   return (
     <>
-    <button onClick ={setterOfAlphabeticPress}>Alphabetic</button>
+    <button className = {displayOn} onClick ={setterOfAlphabeticPress}>Alphabetic</button>
 
     {AlphabeticPress? <GameLogicInter RouteSelector = {RouteSelector} />:null }
     <button onClick ={setterOfNumericPress}>Numeric</button>
