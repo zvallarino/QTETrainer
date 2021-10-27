@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import GameLogic from './GameLogic';
+import GameLogicInter from './GameLogicInter';
 
 function ArcadeMode() {
 
   const [AlphabeticPress,SetAlphabeticPress] = useState(false)
   const [NumericPress, setNumericPress] = useState(false)
   const [AllPress, setAllPress] = useState(false)
-
   const [RouteSelector, setSelectedRoute] = useState('0123456789')
 
   function setterOfAlphabeticPress (e){
@@ -39,11 +39,12 @@ function ArcadeMode() {
   return (
     <>
     <button onClick ={setterOfAlphabeticPress}>Alphabetic</button>
-    { AlphabeticPress? <GameLogic RouteSelector = {RouteSelector} />: null }
+
+    {AlphabeticPress? <GameLogicInter RouteSelector = {RouteSelector} />:null }
     <button onClick ={setterOfNumericPress}>Numeric</button>
-    { NumericPress? <GameLogic RouteSelector = {RouteSelector} />: null }
+    { NumericPress?  <GameLogicInter RouteSelector = {RouteSelector} />:null}
     <button onClick ={setterOfAllPress}>Leet</button>
-    { AllPress? <GameLogic RouteSelector = {RouteSelector} />: null }
+    { AllPress?  <GameLogicInter RouteSelector = {RouteSelector} />:null}
     </>
   );
 }
