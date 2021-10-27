@@ -2,13 +2,27 @@
   "leaderboard": [
     {
       "id": 1,
-      "name": "Woody",
-      "highscore": 8
+      "name": "Zach",
+      "highscore": 8,
+      "category": ""
     },
     {
       "id": 2,
-      "name": "Buzz Lightyear",
-      "highscore": 14
+      "name": "Zach",
+      "highscore": 14,
+      "category": ""
+    },
+    {
+      "id": 3,
+      "name": "Zach",
+      "highscore": 14,
+      "category": ""
+    },
+    {
+      "name": "Zach",
+      "highscore": "480",
+      "category": "Numeric",
+      "id": 4
     }
   ]
 }
