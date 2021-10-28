@@ -16,17 +16,30 @@ function Start() {
   }
 
   return (
-    <StartContainer>
-    <div>
+    <Starter className = "Starter">
+      <div>
      <button className = {disappear? "candy":""} onClick ={setterOfStartButton}>START</button>
      {StartButtonPress? <MainMenu />:null}
-     </div>
-     </StartContainer> 
+      </div>
+     </Starter> 
   )
 }
 
 export default Start;
 
-const StartContainer = styled.div`
-  background-color: brown; 
+const Starter = styled.div`
+  height:97%;
+  width:100%;
+  display:flex; 
+  align-items:center;  
+  justify-content: center;
 `
+
+// const StarterStyled = styled.div`
+// display:flex;
+// justify-content: center;
+// align-items: center;
+
+
+
+// `

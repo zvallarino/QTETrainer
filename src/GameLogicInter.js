@@ -14,7 +14,7 @@ function GameLogicInter({ RouteSelector }) {
 
   return (
     <>
-    {killGame? <GameLogic loopCounter = {loopCounter} setLoopCounter = {setLoopCounter} setLosingScreenDecider = {setLosingScreenDecider} RouteSelector = {RouteSelector} setKillGame = {setKillGame} />: <LosingScreenInter losingScreenDecider = {losingScreenDecider} />}
+    {killGame? <GameLogic loopCounter = {loopCounter} setLoopCounter = {setLoopCounter} setLosingScreenDecider = {setLosingScreenDecider} RouteSelector = {RouteSelector} setKillGame = {setKillGame} />: <LosingScreenInter setKillGame = {setKillGame} losingScreenDecider = {losingScreenDecider} />}
     </>
   );
 }
