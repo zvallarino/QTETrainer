@@ -5,6 +5,7 @@ function LosingScreen() {
 
   const [timeDecreasing, setTimeDecreasing] = useState(10)
   const [tryAgain, setTryAgain] = useState(false)
+  const [disappearing5, setDisappear5] = useState(false)
 
   function onSetTimeRemainingLosing(){
     setTimeDecreasing((timeRemaining)=>timeRemaining -1)
@@ -13,6 +14,7 @@ function LosingScreen() {
 
   function setteroftryAgain(e){
     setTryAgain(cats=>!cats)
+    setDisappear5((dogs)=>!dogs)
   }
 
   useEffect(() => {
@@ -29,15 +31,16 @@ function LosingScreen() {
   }
 
   return (
-    <>
+    <div>
     <p>
-      <button onClick = {setteroftryAgain}>TRY AGAIN</button>
+      <h1 className = {disappearing5? "candy":""}>YOU SUCK!</h1>
+      <button onClick = {setteroftryAgain} className = {disappearing5? "candy":""}>TRY AGAIN</button>
     </p>
     {tryAgain? <ArcadeMode />: null}
     <p>
-    {timeDecreasing}
+    {disappearing5? null : timeDecreasing}
     </p>
-    </>
+    </div>
   );
 }
 

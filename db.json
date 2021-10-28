@@ -4,24 +4,24 @@
       "id": 1,
       "name": "Zach",
       "highscore": 8,
-      "category": ""
+      "category": "cat"
     },
     {
       "id": 2,
       "name": "Zach",
       "highscore": 14,
-      "category": ""
+      "category": "dog"
     },
     {
       "id": 3,
       "name": "Zach",
       "highscore": 14,
-      "category": ""
+      "category": "bird"
     },
     {
       "name": "Zach",
       "highscore": "480",
-      "category": "Numeric",
+      "category": "dog",
       "id": 4
     }
   ]

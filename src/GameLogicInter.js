@@ -10,10 +10,11 @@ function GameLogicInter({ RouteSelector }) {
 
   const [killGame, setKillGame] = useState(true)
   const [losingScreenDecider, setLosingScreenDecider ] = useState(true)
+  const [loopCounter, setLoopCounter] = useState(0)
 
   return (
     <>
-    {killGame? <GameLogic setLosingScreenDecider = {setLosingScreenDecider} RouteSelector = {RouteSelector} setKillGame = {setKillGame} />: <LosingScreenInter losingScreenDecider = {losingScreenDecider} />}
+    {killGame? <GameLogic loopCounter = {loopCounter} setLoopCounter = {setLoopCounter} setLosingScreenDecider = {setLosingScreenDecider} RouteSelector = {RouteSelector} setKillGame = {setKillGame} />: <LosingScreenInter losingScreenDecider = {losingScreenDecider} />}
     </>
   );
 }

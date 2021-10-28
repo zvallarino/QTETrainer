@@ -1,9 +1,10 @@
 import Generator from "./Generator.js"
 import React, { useState, useEffect } from "react"
 import FinalScreen from "./FinalScreen.js"
+import { ProgressBar } from 'react-bootstrap'
 // import LosingScreen from "./LosingScreen.js"
 
-function GameLogic( {RouteSelector, setKillGame, setLosingScreenDecider} ) {
+function GameLogic( {RouteSelector, setKillGame, setLosingScreenDecider, loopCounter, setLoopCounter} ) {
   function randomFirstInput(){
     let randomInput = RouteSelector
       let firstInput = randomInput[Math.floor(Math.random() * randomInput.length)]
@@ -18,7 +19,7 @@ function GameLogic( {RouteSelector, setKillGame, setLosingScreenDecider} ) {
   const [streakcounter, setStreakCounter] = useState(0)
   const [finalScore,setFinalScore] = useState(0)
   const [mistakes,setMistakes] = useState(0)
-  const [loopCounter, setLoopCounter] = useState(0)
+  const [progressbar,setProgressBar] = useState(0)
 
   let alphabetz = "abcdefghijklmnopqrstuvwxyz"
 
@@ -39,12 +40,22 @@ function gameFunction(cats) {
     setStreakCounter(0)
   } }
 
-function StreakCounterSayings(){
-  if (streakcounter === 1){
-    // setScore(score => score + 1)
-   
-  } else if ( streakcounter === 10){
-    console.log('On Fire')
+function StreakCounterSayings(e){
+  if (streakcounter >= 5){
+    setScore(score => score + .25)
+    console.log('Heating Up')
+  } else if ( streakcounter >= 10){
+    setScore(score => score + .5)
+  }
+}
+
+function SetterOfProgressBar(e){
+  if (streakcounter === 0){
+    setProgressBar(0)
+  } else if (streakcounter > 0 && streakcounter <10){
+    setProgressBar((cats)=>cats + 10)
+  } else {
+    setProgressBar(100)
   }
 }
 // StreakCounterSayings()
@@ -52,6 +63,8 @@ function StreakCounterSayings(){
   function handleChange(e){
     setUserInput(e.target.value.slice(-1))
     gameFunction(e.target.value.slice(-1))
+    StreakCounterSayings(e)
+    SetterOfProgressBar(e)
   }
   
   function onSetTimeRemaining(){
@@ -66,56 +79,63 @@ function StreakCounterSayings(){
 
   if(timeRemaining === 0){
     if (loopCounter === 0){
-      if (score >= 8) {
+      if (score >= 1) {
         alert ("Level 2") 
         console.log("hello")
         setLoopCounter(loopCounter => loopCounter + 1)
         setFinalScore(finalScore + score)
         setScore(0)
-        setTimeRemaining(30)
+        setStreakCounter(0)
+        setProgressBar(0)
+        setTimeRemaining(10)
       } else {
         setKillGame(false)
         setLosingScreenDecider(false)
         setTimeRemaining(20)
       }
       } else if (loopCounter === 1) {
-      if (score >= 20) {
+      if (score >= 2) {
           alert ("Level 3")
           setLoopCounter(loopCounter => loopCounter + 1)
           setFinalScore(finalScore + score)
           setScore(0)
-          setTimeRemaining(30)
+          setStreakCounter(0)
+          setProgressBar(0)
+          setTimeRemaining(10)
         } else {
           setKillGame(false)
           setLosingScreenDecider(false)
           setTimeRemaining(20)
         }
       } else if (loopCounter === 2) {
-        if (score >= 40) {
+        if (score >= 3) {
         alert ("Level 4")
         setLoopCounter(loopCounter => loopCounter + 1)
         setFinalScore(finalScore + score)
         setScore(0)
+        setStreakCounter(0)
+        setProgressBar(0)
         setTimeRemaining(5)
         } else {
           setKillGame(false)
           setLosingScreenDecider(true)
           setTimeRemaining(20)}
-
         } else if (loopCounter === 3) {
-        if (score >= 60) {
+        if (score >= 4) {
           alert ("Level 5")
         setLoopCounter(loopCounter => loopCounter + 1)
         setFinalScore(finalScore + score)
         setScore(0)
-        setTimeRemaining(40)
+        setStreakCounter(0)
+        setProgressBar(0)
+        setTimeRemaining(10)
       } else {
         setKillGame(false)
         setLosingScreenDecider(true)
         setTimeRemaining(20)} 
       }
       else {
-      alert (`You won! Your score is ${finalScore}`)
+        setLosingScreenDecider(true)
       }
   }
     
@@ -146,10 +166,12 @@ useEffect(()=>timingFunction(),[])
       <p></p>
       {`This is the Streak Counter: ${streakcounter}`}
       <p></p>
+      {`This is the progress Counter: ${progressbar}`}
+      <p></p>
       {`This is the Final Score: ${finalScore}`}
       <p></p>
       {`This is the Loop Counter: ${loopCounter}`}
-
+      <p></p>
       <h4>{timeRemaining} Seconds Remaining</h4>
       <label> Input
       <input type="text" name="name" onChange = {handleChange} value ={userInput} />

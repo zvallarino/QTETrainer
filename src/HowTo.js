@@ -6,7 +6,7 @@ function HowTo() {
        How To Play 
      </h1>
      <h3>
-       LOL who reads instructions 
+       LOL who reads the instructions 
      </h3>
      <h3>
        Instructions are for the weak

@@ -1,7 +1,31 @@
 import { Form } from "semantic-ui-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import ArcadeMode from "./ArcadeMode";
 
 function FinalScreen( { finalScore } ){
+
+  const [timeDecreasing, setTimeDecreasing] = useState(10)
+  const [tryAgain, setTryAgain] = useState(false)
+  const [disappearing5, setDisappear5] = useState(false)
+
+  function onSetTimeRemainingLosing(){
+    setTimeDecreasing((timeRemaining)=>timeRemaining -1)
+  }
+
+
+  function setteroftryAgain(e){
+    setTryAgain(cats=>!cats)
+    setDisappear5((dogs)=>!dogs)
+  }
+
+  useEffect(() => {
+    const timerID = setInterval(()=>{onSetTimeRemainingLosing()},1000);
+    return function cleanup(){
+      clearInterval(timerID)
+    }
+  }, []);
+
+
 
     const [newScore, setNewScore] = useState({
         name: "",
@@ -33,6 +57,12 @@ function FinalScreen( { finalScore } ){
         .then((pokemon) => console.log(pokemon))
       }
     
+      if (timeDecreasing === 0){
+        window.location.reload();
+        return false;
+      }
+    
+    
 
     return (
         <>
@@ -50,7 +80,15 @@ function FinalScreen( { finalScore } ){
           
         </Form.Group>
         <Form.Button>Submit</Form.Button>
-      </Form>
+        </Form>
+        <p>
+      <h1 className = {disappearing5? "candy":""}>YOU SUCK!</h1>
+      <button onClick = {setteroftryAgain} className = {disappearing5? "candy":""}>TRY AGAIN</button>
+      </p>
+        {tryAgain? <ArcadeMode />: null}
+      <p>
+        {disappearing5? null : timeDecreasing}
+        </p>
         </>
     )
 }
