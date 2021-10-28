@@ -5,7 +5,7 @@ import { ProgressBar } from 'react-bootstrap'
 import styled from 'styled-components';  
 // import LosingScreen from "./LosingScreen.js"
 
-function GameLogic( {RouteSelector, setKillGame, setLosingScreenDecider, loopCounter, setLoopCounter} ) {
+function GameLogic( {RouteSelector, setKillGame, setLosingScreenDecider, loopCounter, setLoopCounter, finalScore, setFinalScore } ) {
   function randomFirstInput(){
     let randomInput = RouteSelector
       let firstInput = randomInput[Math.floor(Math.random() * randomInput.length)]
@@ -18,7 +18,7 @@ function GameLogic( {RouteSelector, setKillGame, setLosingScreenDecider, loopCou
   const [timeRemaining, setTimeRemaining] = useState(20)
   const [score,setScore] = useState(0)
   const [streakcounter, setStreakCounter] = useState(0)
-  const [finalScore,setFinalScore] = useState(0)
+  // const [finalScore,setFinalScore] = useState(0)
   const [mistakes,setMistakes] = useState(0)
   const [progressbar,setProgressBar] = useState(0)
 
@@ -33,7 +33,7 @@ function gameFunction(cats) {
     console.log('correct')
     console.log(randomLetter)
     setMainNumber(randomLetter)
-    setScore(score=>score +1)
+    setScore(score=>score +100)
     setStreakCounter(streakcounter=>streakcounter+1)
   } else {
     console.log('incorrect')
@@ -43,10 +43,10 @@ function gameFunction(cats) {
 
 function StreakCounterSayings(e){
   if (streakcounter >= 5){
-    setScore(score => score + .25)
+    setScore(score => score + 10)
     console.log('Heating Up')
   } else if ( streakcounter >= 10){
-    setScore(score => score + .5)
+    setScore(score => score + 25)
   }
 }
 
