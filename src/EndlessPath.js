@@ -8,20 +8,24 @@ function EndlessPath() {
   const [NumericPressE, setNumericPressE] = useState(false)
   const [AllPressE, setAllPressE] = useState(false)
   const [RouteSelectorE, setSelectedRouteE] = useState('0123456789')
+  const [disppear4,setDisappear4] = useState(false)
 
   function setterOfAlphabeticPressE (e){
     SetAlphabeticPressE(cats=>!cats)
     setterOfRoute1E(e)
+    setDisappear4((bang)=>!bang)
   }
 
   function setterOfNumericPressE (e){
     setNumericPressE(cats=>!cats)
     setterOfRoute2E(e)
+    setDisappear4((bang)=>!bang)
   }
 
   function setterOfAllPressE (e){
     setAllPressE(cats=>!cats)
     setterOfRoute3E(e)
+    setDisappear4((bang)=>!bang)
   }
 
   function setterOfRoute1E(e){
@@ -38,11 +42,11 @@ function EndlessPath() {
 
   return (
     <>
-    <button onClick ={setterOfAlphabeticPressE} >Alphabetic</button>
+    <button  className = {disppear4? "candy":""} onClick ={setterOfAlphabeticPressE} >Alphabetic</button>
     {AlphabeticPressE? <EndlessInter RouteSelector = {RouteSelectorE} />:null }
-    <button  onClick ={setterOfNumericPressE} >Numeric</button>
+    <button className = {disppear4? "candy":""}  onClick ={setterOfNumericPressE} >Numeric</button>
     { NumericPressE?  <EndlessInter RouteSelector = {RouteSelectorE} />:null}
-    <button  onClick ={setterOfAllPressE} >Leet</button>
+    <button  className = {disppear4? "candy":""} onClick ={setterOfAllPressE} >Leet</button>
     { AllPressE?  <EndlessInter RouteSelector = {RouteSelectorE} />:null}
     </>
   );

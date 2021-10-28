@@ -5,15 +5,22 @@ import FinalScreen from "./FinalScreen.js"
 
 function EndlessMode( {RouteSelector, setKillGame} ) {
 
+  function randomFirstInputE(){
+    let randomInput = RouteSelector
+      let firstInput = randomInput[Math.floor(Math.random() * randomInput.length)]
+      return firstInput
+  }
+
   const [userInput,setUserInput] = useState('')
   const [gamesInput, setGamesInput] = useState ('')
-  const [mainNumber, setMainNumber] = useState('z')
+  const [mainNumber, setMainNumber] = useState(randomFirstInputE())
   const [timeRemaining, setTimeRemaining] = useState(20)
   const [score,setScore] = useState(0)
   const [streakcounter, setStreakCounter] = useState(0)
   const [finalScore,setFinalScore] = useState(0)
   const [mistakes,setMistakes] = useState(0)
   const [loopCounter, setLoopCounter] = useState(0)
+  const [progressbarE,setProgressBarE] = useState(0)
 
   let alphabetz = "abcdefghijklmnopqrstuvwxyz"
 
@@ -32,17 +39,30 @@ function gameFunction(cats) {
     setStreakCounter(0)
   } }
 
-function StreakCounterSayings(){
-  if (streakcounter === 5){
-    console.log('Doing Great')
-  } else if ( streakcounter === 10){
-    console.log('On Fire')
+  function StreakCounterSayingsE(e){
+    if (streakcounter >= 5){
+      setScore(score => score + .25)
+      console.log('Heating Up')
+    } else if ( streakcounter >= 10){
+      setScore(score => score + .5)
+    }
   }
-}
+  
+  function SetterOfProgressBarE(e){
+    if (streakcounter === 0){
+      setProgressBarE(0)
+    } else if (streakcounter > 0 && streakcounter <10){
+      setProgressBarE((cats)=>cats + 10)
+    } else {
+      setProgressBarE(100)
+    }
+  }
 
   function handleChange(e){
     setUserInput(e.target.value.slice(-1))
     gameFunction(e.target.value.slice(-1))
+    StreakCounterSayingsE(e)
+    SetterOfProgressBarE()
   }
   
   // function onSetTimeRemaining(){
@@ -135,8 +155,10 @@ useEffect(()=>timingFunction(),[])
       <p></p>
       {`This is the Final Score: ${finalScore}`}
       <p></p>
+      {`This is the Progress Counter: ${progressbarE}`}
+      <p></p>
       {`This is the Loop Counter: ${loopCounter}`}
-      <h4><img src ="https://www.freepnglogos.com/uploads/infinity-symbol-png/infinity-symbol-clipart-download-best-infinity-14.png" alt ="transpar"></img></h4>
+      {/* <h4><img src ="https://www.freepnglogos.com/uploads/infinity-symbol-png/infinity-symbol-clipart-download-best-infinity-14.png" alt ="transpar"></img></h4> */}
       <label> Input
       <input type="text" name="name" onChange = {handleChange} value ={userInput} />
       </label>

@@ -9,22 +9,25 @@ function ArcadeMode() {
   const [AllPress, setAllPress] = useState(false)
   const [RouteSelector, setSelectedRoute] = useState('0123456789')
   const [displayOn, setDisplayOn] = useState ("none")
+  const [disappear3,setDisappear3] = useState(false)
 
   function setterOfAlphabeticPress (e){
     SetAlphabeticPress(cats=>!cats)
     setterOfRoute1(e)
-    // e.target.remove()
+    setDisappear3((fox)=>!fox)
     e.target.style.display = displayOn
   }
 
   function setterOfNumericPress (e){
     setNumericPress(cats=>!cats)
     setterOfRoute2(e)
+    setDisappear3((fox)=>!fox)
   }
 
   function setterOfAllPress (e){
     setAllPress(cats=>!cats)
     setterOfRoute3(e)
+    setDisappear3((fox)=>!fox)
   }
 
   function setterOfRoute1(e){
@@ -41,12 +44,11 @@ function ArcadeMode() {
 
   return (
     <>
-    <button className = {displayOn} onClick ={setterOfAlphabeticPress}>Alphabetic</button>
-
+    <button  className = {disappear3? "candy":""} onClick ={setterOfAlphabeticPress}>Alphabetic</button>
     {AlphabeticPress? <GameLogicInter RouteSelector = {RouteSelector} />:null }
-    <button onClick ={setterOfNumericPress}>Numeric</button>
+    <button  className = {disappear3? "candy":""} onClick ={setterOfNumericPress}>Numeric</button>
     { NumericPress?  <GameLogicInter RouteSelector = {RouteSelector} />:null}
-    <button onClick ={setterOfAllPress}>Leet</button>
+    <button  className = {disappear3? "candy":""} onClick ={setterOfAllPress}>Leet</button>
     { AllPress?  <GameLogicInter RouteSelector = {RouteSelector} />:null}
     </>
   );
