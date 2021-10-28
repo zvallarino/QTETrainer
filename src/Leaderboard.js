@@ -6,11 +6,18 @@ function Leaderboard({leaderboard}) {
   let ArrayOfDogs = leaderboard.filter((player) => player.category === "dog")
   let ArrayOfBirds = leaderboard.filter((player) => player.category === "bird")
 
+  let sortedCats = ArrayOfCats.sort(function(a, b){return b.highscore-a.highscore});
 
+  let sortedDogs = ArrayOfDogs.sort(function(a, b){return b.highscore-a.highscore});
 
-  let catsLeaderBoard = ArrayOfCats.map((player) => <PlayerRanking key = {player.id} player = {player} />)
-  let DogsLeaderBoard  = ArrayOfDogs.map((player) => <PlayerRanking key = {player.id} player = {player} />)
-  let BirdsLeaderBoard = ArrayOfBirds.map((player) => <PlayerRanking key = {player.id} player = {player} />)
+  let sortedBirds = ArrayOfBirds.sort(function(a, b){return b.highscore-a.highscore});
+
+  console.log(sortedCats)
+  
+
+  let catsLeaderBoard = sortedCats.map((player) => <PlayerRanking key = {player.id} player = {player} />)
+  let DogsLeaderBoard  = sortedDogs.map((player) => <PlayerRanking key = {player.id} player = {player} />)
+  let BirdsLeaderBoard = sortedBirds.map((player) => <PlayerRanking key = {player.id} player = {player} />)
 
 
   return (  

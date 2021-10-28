@@ -135,6 +135,15 @@ function SetterOfProgressBar(e){
         setLosingScreenDecider(true)
         setTimeRemaining(20)} 
       }
+      else if (loopCounter === 4) {
+        if (score >= 4) {
+          setKillGame(false)
+          setLosingScreenDecider(true)
+      } else {
+        setKillGame(false)
+        setLosingScreenDecider(true)
+        setTimeRemaining(20)} 
+      }
       else {
         setKillGame(false)
         setLosingScreenDecider(true)

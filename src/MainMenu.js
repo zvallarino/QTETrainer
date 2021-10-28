@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import ArcadeMode from "./ArcadeMode";
 import EndlessPath from "./EndlessPath";
 import Settings from "./Settings"
+import ReactDOM from "react-dom";
+import { Route, BrowserRouter as Router, NavLink } from 'react-router-dom';
 import styled from 'styled-components'; 
 
 
@@ -40,9 +42,11 @@ function MainMenu() {
       {Arcade? <ArcadeMode /> : null}
       <button onClick = {SetterOfEndless} className = {disappearing? "candy":""}>Endless</button>
       {Endless? <EndlessPath />: null}
-      <button className = {disappearing? "candy":""}>How to</button>
       <button onClick = {SetterOfSettings} className = {disappearing? "candy":""}>Settings </button>
       {settings? <Settings />: null}
+      <NavLink to = "/HowTo" > 
+      <button className = {disappearing? "candy":""}>How to</button>
+      </NavLink>
       <button onClick ={PageReload} className = {disappearing? "candy":""}>Main Menu</button>
     </MainMenuZ>
   );

@@ -67,8 +67,8 @@ function FinalScreen( { finalScore, categoryForLeaderBoard} ){
 
     return (
         <>
-        {`This is your ${categoryForLeaderBoard}`}
-        {`This is your ${finalScore}`}
+        {`This is your category: ${categoryForLeaderBoard}`}
+        {`This is your final score: ${finalScore}`}
         <Form onSubmit={submittingNewScore}>
         <Form.Group widths="equal">
           <Form.Input fluid label="Name" placeholder="Name" name="name" onChange = {handleChange}/>

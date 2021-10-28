@@ -18,8 +18,9 @@ function Start() {
   return (
     <Starter className = "Starter">
       <div>
-     <button className = {disappear? "candy":""} onClick ={setterOfStartButton}>START</button>
-     {StartButtonPress? <MainMenu />:null}
+     <NavLink to = "/MainMenu"> <button >START</button>
+     {/* {StartButtonPress? <MainMenu />:null} */}
+     </NavLink> 
       </div>
      </Starter> 
   )
