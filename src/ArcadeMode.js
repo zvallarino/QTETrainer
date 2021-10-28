@@ -11,6 +11,7 @@ function ArcadeMode() {
   const [RouteSelector, setSelectedRoute] = useState('0123456789')
   const [displayOn, setDisplayOn] = useState ("none")
   const [disappear3,setDisappear3] = useState(false)
+  const [categoryForLeaderBoard, setCategoryForLeaderBoard] = useState ('')
 
   function setterOfAlphabeticPress (e){
     SetAlphabeticPress(cats=>!cats)
@@ -33,29 +34,32 @@ function ArcadeMode() {
 
   function setterOfRoute1(e){
     setSelectedRoute('abcdefghijklmnopqrstuvwxyz')
+    setCategoryForLeaderBoard('Alphabetic')
   }
 
   function setterOfRoute2(e){
     setSelectedRoute('0123456789')
+    setCategoryForLeaderBoard('Numeric')
   }
 
   function setterOfRoute3(e){
     setSelectedRoute("`-=[];',./123456789abcdefghijklmnopqrstuvwxyz")
+    setCategoryForLeaderBoard('All')
   }
 
   return (
     <ArcadeModeStyling className = 'ArcadeModeStyling'>
     <ButtonSpacing className = 'buttonSpacing'>
     <button  className = {disappear3? "candy":""} onClick ={setterOfAlphabeticPress}>Alphabetic</button>
-    {AlphabeticPress? <GameLogicInter RouteSelector = {RouteSelector} />:null }
+    {AlphabeticPress? <GameLogicInter categoryForLeaderBoard = {categoryForLeaderBoard} RouteSelector = {RouteSelector} />:null }
     </ButtonSpacing>
     <ButtonSpacing className = 'buttonSpacing'>
     <button  className = {disappear3? "candy":""} onClick ={setterOfNumericPress}>Numeric</button>
-    { NumericPress?  <GameLogicInter RouteSelector = {RouteSelector} />:null}
+    { NumericPress?  <GameLogicInter categoryForLeaderBoard = {categoryForLeaderBoard} RouteSelector = {RouteSelector} />:null}
     </ButtonSpacing>
     <ButtonSpacing className = 'buttonSpacing'>
     <button  className = {disappear3? "candy":""} onClick ={setterOfAllPress}>Leet</button>
-    { AllPress?  <GameLogicInter RouteSelector = {RouteSelector} />:null}
+    { AllPress?  <GameLogicInter categoryForLeaderBoard = {categoryForLeaderBoard} RouteSelector = {RouteSelector} />:null}
     </ButtonSpacing>
     </ArcadeModeStyling>
   );

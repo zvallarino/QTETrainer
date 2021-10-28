@@ -31,7 +31,7 @@ function gameFunction(cats) {
     console.log('correct')
     console.log(randomLetter)
     setMainNumber(randomLetter)
-    setScore(score=>score +1)
+    setScore(score=>score + 100)
     setStreakCounter(streakcounter=>streakcounter+1)
   } else {
     console.log('incorrect')
@@ -41,10 +41,10 @@ function gameFunction(cats) {
 
   function StreakCounterSayingsE(e){
     if (streakcounter >= 5){
-      setScore(score => score + .25)
+      setScore(score => score + 10)
       console.log('Heating Up')
     } else if ( streakcounter >= 10){
-      setScore(score => score + .5)
+      setScore(score => score + 25)
     }
   }
   
