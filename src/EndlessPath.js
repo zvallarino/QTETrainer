@@ -1,6 +1,7 @@
 import React,{ useState } from 'react'
 import GameLogicInter from './GameLogicInter'
 import EndlessInter from './EndlessInter'
+import styled from 'styled-components'; 
 
 function EndlessPath() {
 
@@ -41,15 +42,22 @@ function EndlessPath() {
   }
 
   return (
-    <>
+    <EndlessStyling>
     <button  className = {disppear4? "candy":""} onClick ={setterOfAlphabeticPressE} >Alphabetic</button>
     {AlphabeticPressE? <EndlessInter RouteSelector = {RouteSelectorE} />:null }
     <button className = {disppear4? "candy":""}  onClick ={setterOfNumericPressE} >Numeric</button>
     { NumericPressE?  <EndlessInter RouteSelector = {RouteSelectorE} />:null}
     <button  className = {disppear4? "candy":""} onClick ={setterOfAllPressE} >Leet</button>
     { AllPressE?  <EndlessInter RouteSelector = {RouteSelectorE} />:null}
-    </>
+    </EndlessStyling>
   );
 }
 
 export default EndlessPath;
+
+const EndlessStyling = styled.div`
+display:flex; 
+flex-direction:row;
+justify-content:space-between;
+`
+

@@ -2,6 +2,7 @@ import Generator from "./Generator.js"
 import React, { useState, useEffect } from "react"
 import FinalScreen from "./FinalScreen.js"
 import { ProgressBar } from 'react-bootstrap'
+import styled from 'styled-components';  
 // import LosingScreen from "./LosingScreen.js"
 
 function GameLogic( {RouteSelector, setKillGame, setLosingScreenDecider, loopCounter, setLoopCounter} ) {
@@ -135,6 +136,7 @@ function SetterOfProgressBar(e){
         setTimeRemaining(20)} 
       }
       else {
+        setKillGame(false)
         setLosingScreenDecider(true)
       }
   }
@@ -158,7 +160,9 @@ useEffect(()=>timingFunction(),[])
     <div onKeyDown = {(e)=>console.log(e.target.value)} tabIndex = '0'>
       {`This is the first Input: ${gamesInput}`}
       <p></p>
-      {`This is the Main Input: ${mainNumber.toUpperCase()}`}
+      <MainButton>
+      {mainNumber.toUpperCase()}
+      </MainButton>
       <p></p>
       {`This is the Score: ${score}`}
       <p></p>
@@ -182,6 +186,14 @@ useEffect(()=>timingFunction(),[])
 
 export default GameLogic;
 
+
+const MainButton = styled.div`
+font-size:200px;
+background-color:white;
+border: 20px solid black;
+border-radius:50%;
+text-align:center;
+`
   // const [gamesInput2, setGamesInput2] = useState ('')
   // const [gamesInput3, setGamesInput3] = useState ('')
   // const [gamesInput4, setGamesInput4] = useState ('')

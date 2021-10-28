@@ -6,21 +6,12 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import styled from 'styled-components';  
 
-const StyledApp = styled.div`
-  min-height: 100vh; 
-  background-color: #bf4040
 
-
-`
 
 ReactDOM.render( 
-  <StyledApp> 
   <Router> 
-  
     <App />
-    
-  </Router>
-  </StyledApp>,
+  </Router>,
   document.getElementById('root')
 );
 

@@ -1,11 +1,11 @@
 import LosingScreen from "./LosingScreen"
 import FinalScreen from "./FinalScreen"
 
-function LosingScreenInter({losingScreenDecider}){
+function LosingScreenInter({losingScreenDecider, setKillGame}){
 
     return(
         <>
-        {losingScreenDecider? <FinalScreen /> : <LosingScreen />}
+        {losingScreenDecider? <FinalScreen /> : <LosingScreen setKillGame = {setKillGame} />}
         </>
     )
 

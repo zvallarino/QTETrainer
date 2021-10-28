@@ -1,9 +1,19 @@
-.App {
-  text-align: center;
+
+html {
+  margin:0px;
+  height:100%;
+  background-color: aqua;
 }
 
+.App {
+  text-align: center;
+  height:100vh;
+  width:100%;
+}
+
+
 .App-logo {
-  height: 40vmin;
+  /* height: 40vmin; */
   pointer-events: none;
 }
 
@@ -15,11 +25,11 @@
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
+  /* min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: center; */
   font-size: calc(10px + 2vmin);
   color: white;
 }
