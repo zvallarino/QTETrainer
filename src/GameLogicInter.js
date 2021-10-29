@@ -12,10 +12,11 @@ function GameLogicInter({ RouteSelector, categoryForLeaderBoard}) {
   const [losingScreenDecider, setLosingScreenDecider ] = useState(true)
   const [loopCounter, setLoopCounter] = useState(0)
   const [finalScore,setFinalScore] = useState(0)
+  const [victoryOrClose,setVictoryOrClose] = useState(false)
 
   return (
     <>
-    {killGame? <GameLogic loopCounter = {loopCounter} setLoopCounter = {setLoopCounter} setLosingScreenDecider = {setLosingScreenDecider} RouteSelector = {RouteSelector} setKillGame = {setKillGame}  finalScore = {finalScore} setFinalScore = {setFinalScore}/>: <LosingScreenInter setKillGame = {setKillGame} losingScreenDecider = {losingScreenDecider} categoryForLeaderBoard = {categoryForLeaderBoard} finalScore = {finalScore}/>}
+    {killGame? <GameLogic setVictoryOrClose = {setVictoryOrClose} loopCounter = {loopCounter} setLoopCounter = {setLoopCounter} setLosingScreenDecider = {setLosingScreenDecider} RouteSelector = {RouteSelector} setKillGame = {setKillGame}  finalScore = {finalScore} setFinalScore = {setFinalScore}/>: <LosingScreenInter setKillGame = {setKillGame} losingScreenDecider = {losingScreenDecider} categoryForLeaderBoard = {categoryForLeaderBoard} victoryOrClose ={victoryOrClose} finalScore = {finalScore}/>}
     </>
   );
 }

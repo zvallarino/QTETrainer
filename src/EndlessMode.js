@@ -1,6 +1,7 @@
 import Generator from "./Generator.js"
 import React, { useState, useEffect } from "react"
 import FinalScreen from "./FinalScreen.js"
+import styled from 'styled-components';  
 // import LosingScreen from "./LosingScreen.js"
 
 function EndlessMode( {RouteSelector, setKillGame} ) {
@@ -21,6 +22,8 @@ function EndlessMode( {RouteSelector, setKillGame} ) {
   const [mistakes,setMistakes] = useState(0)
   const [loopCounter, setLoopCounter] = useState(0)
   const [progressbarE,setProgressBarE] = useState(0)
+  const [onFire,setOnFire] = useState(false)
+  const [progressbar,setProgressBar] = useState(0)
 
   let alphabetz = "abcdefghijklmnopqrstuvwxyz"
 
@@ -51,10 +54,13 @@ function gameFunction(cats) {
   function SetterOfProgressBarE(e){
     if (streakcounter === 0){
       setProgressBarE(0)
+      setOnFire(false)
     } else if (streakcounter > 0 && streakcounter <10){
       setProgressBarE((cats)=>cats + 10)
+      setOnFire(false)
     } else {
       setProgressBarE(100)
+      setOnFire(true)
     }
   }
 
@@ -139,31 +145,170 @@ setInterval(()=>RandomLetterGenerator1(), 5000)
 
 useEffect(()=>timingFunction(),[])
 
-
-  
+const ProgressBar = (props) => {
   return (
-    <div onKeyDown = {(e)=>console.log(e.target.value)} tabIndex = '0'>
-      {`This is the first Input: ${gamesInput}`}
-      <p></p>
-      {`This is the Main Input: ${mainNumber.toUpperCase()}`}
-      <p></p>
-      {`This is the Score: ${score}`}
-      <p></p>
-      {`This is the Mistakes: ${mistakes}`}
-      <p></p>
-      {`This is the Streak Counter: ${streakcounter}`}
-      <p></p>
-      {`This is the Final Score: ${finalScore}`}
-      <p></p>
-      {`This is the Progress Counter: ${progressbarE}`}
-      <p></p>
-      {`This is the Loop Counter: ${loopCounter}`}
-      {/* <h4><img src ="https://www.freepnglogos.com/uploads/infinity-symbol-png/infinity-symbol-clipart-download-best-infinity-14.png" alt ="transpar"></img></h4> */}
-      <label> Input
-      <input type="text" name="name" onChange = {handleChange} value ={userInput} />
-      </label>
-      </div>
+    <div>
+      <Bar>
+        <Fill percentage={props} />
+      </Bar>
+    </div>
   );
 }
 
+const Bar = styled.div`
+  position: relative;
+  height: 500px;
+  width: 20px;
+  background: white;
+  border-radius: 30px;
+  border: 20px solid black;
+  margin: 1rem auto;
+`
+
+
+const Fill = styled.div`
+  background: red;
+  width: 20px;
+  border-radius: inherit;
+  transition: height 0.2s ease-in;
+  height:${`${progressbar}%`};
+  `
+
+
+
+  
+  return (
+    <WholeThing className = "WholeThing">
+    <BoxOnLeft className = "Box">
+      <Box1>
+        <InnerBox1>
+        {`Score:${score}`}
+        </InnerBox1>
+        <InnerBox2>
+    {`Miss: ${mistakes}`}
+        </InnerBox2>
+      </Box1>
+      <Box2>
+        
+      </Box2>
+    </BoxOnLeft>
+    <SpaceBewteenThings>
+    <MainBox className = "Box">
+    <MainButton>
+    {mainNumber.toUpperCase()}
+    </MainButton>
+    <h4>{timeRemaining} Seconds Remaining</h4>
+    <p></p>
+    <InputBoxZ>
+    <label> 
+    <input type="text" name="name" onChange = {handleChange} value ={userInput} />
+    </label>
+    </ InputBoxZ>
+    </MainBox>
+    </SpaceBewteenThings>
+    <BoxOnRight className = "Box">
+      <Circle className = {onFire?"onFirePlease":""}>
+        {onFire?"FIRE":""}
+      </Circle>
+      <ProgressBar />
+    </BoxOnRight>
+    </WholeThing>
+);
+}
+
 export default EndlessMode;
+
+
+const WholeThing = styled.div`
+display:flex;
+flex-direction:row;
+justify-content: space-between;
+
+h4{
+  font-size: 30px;
+  font-weight:bold;
+}
+`
+const MainBox =styled.div`
+display:flex;
+flex-direction:column;
+`
+
+const MainButton = styled.div`
+flex-direction:column;
+font-size:200px;
+background-color:white;
+border: 20px solid black;
+width:250px;
+height:250px;
+border-radius:50%;
+text-align:center;
+`
+
+const BoxOnLeft = styled.div`
+display:flex;
+flex-direction:column;
+width:175px; 
+
+`
+
+const Circle = styled.div`
+border: 20px solid black;
+width:120px;
+height:120px; 
+border-radius: 50%;
+text-weight:bold;
+font-size: 30px;
+color:black;
+text-align:center;
+justify-content:center;
+padding: 10px;
+background-color:white;
+`
+
+const BoxOnRight = styled.div`
+display:flex;
+flex-direction:column;
+`
+
+const InputBoxZ =styled.div`
+height:40px;
+font-size:20pt;
+
+`
+
+
+const InnerBox1 = styled.div`
+font-size: 25px;
+font-weight: bold; 
+background-color:white;
+border: 10px solid black;
+border-radius: 30px;
+margin-top: 100px;
+margin-bottom: 10px;
+`
+
+const InnerBox2 = styled.div`
+font-size: 25px;
+font-weight: bold;
+background-color:white;
+border: 10px solid black;
+border-radius: 30px;
+
+`
+
+const Box1 = styled.div`
+flex-direction:column;
+height:400px;
+`
+
+const Box2 = styled.div`
+height:50%
+border: 10px solid blue;
+`
+
+
+const SpaceBewteenThings = styled.div`
+margin-left:400px;
+margin-right:400px;
+`

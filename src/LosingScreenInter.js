@@ -1,11 +1,11 @@
 import LosingScreen from "./LosingScreen"
 import FinalScreen from "./FinalScreen"
 
-function LosingScreenInter({losingScreenDecider, setKillGame, categoryForLeaderBoard, finalScore}){
+function LosingScreenInter({losingScreenDecider, setKillGame, categoryForLeaderBoard, finalScore, victoryOrClose}){
 
     return(
         <>
-        {losingScreenDecider? <FinalScreen categoryForLeaderBoard = {categoryForLeaderBoard} finalScore = {finalScore} /> : <LosingScreen setKillGame = {setKillGame}  />}
+        {losingScreenDecider? <FinalScreen categoryForLeaderBoard = {categoryForLeaderBoard} setKillGame={setKillGame} finalScore = {finalScore} victoryOrClose ={victoryOrClose} /> : <LosingScreen setKillGame = {setKillGame}  />}
         </>
     )
 
