@@ -1,8 +1,9 @@
 import { Form } from "semantic-ui-react";
 import { useState, useEffect } from "react";
 import ArcadeMode from "./ArcadeMode";
+import styled from 'styled-components';  
 
-function FinalScreen( { finalScore, categoryForLeaderBoard} ){
+function FinalScreen( { finalScore, categoryForLeaderBoard, victoryOrClose, setKillGame} ){
 
   const [timeDecreasing, setTimeDecreasing] = useState(10)
   const [tryAgain, setTryAgain] = useState(false)
@@ -18,6 +19,7 @@ function FinalScreen( { finalScore, categoryForLeaderBoard} ){
   function setteroftryAgain(e){
     setTryAgain(cats=>!cats)
     setDisappear5((dogs)=>!dogs)
+    setKillGame(true)
   }
 
   useEffect(() => {
@@ -67,24 +69,27 @@ function FinalScreen( { finalScore, categoryForLeaderBoard} ){
 
     return (
         <>
-        {`This is your category: ${categoryForLeaderBoard}`}
-        {`This is your final score: ${finalScore}`}
+        <OutterBox>
+        <InnerBox1>
+        {`CATEGORY: ${categoryForLeaderBoard}`}
+        </InnerBox1>
+        <InnerBox2>
+        {`FINAL SCORE: ${finalScore}`}
+        </InnerBox2>
+        </OutterBox>
         <Form onSubmit={submittingNewScore}>
+          
         <Form.Group widths="equal">
-          <Form.Input fluid label="Name" placeholder="Name" name="name" onChange = {handleChange}/>
-         
-          
-          
-          
-          
+          <Box3>
+          <Form.Input fluid label="INPUT NAME" placeholder="Name" name="name" onChange = {handleChange}/>
+          </Box3>
         </Form.Group>
         <Form.Button>Submit</Form.Button>
         </Form>
         <p>
-      <h1 className = {disappearing5? "candy":""}>YOU SUCK!</h1>
+      <h1 className = {disappearing5? "candy":""}>{victoryOrClose? "Nice Run":"Victory"}</h1>
       <button onClick = {setteroftryAgain} className = {disappearing5? "candy":""}>TRY AGAIN</button>
       </p>
-        {tryAgain? <ArcadeMode />: null}
       <p>
         {disappearing5? null : timeDecreasing}
         </p>
@@ -94,3 +99,30 @@ function FinalScreen( { finalScore, categoryForLeaderBoard} ){
 
 
 export default FinalScreen
+
+const OutterBox = styled.div`
+display:flex;
+flex-direction:column;
+`
+
+const InnerBox1 = styled.div`
+
+  font-size: 40px;
+  font-weight:bold;
+
+`
+
+
+const InnerBox2 = styled.div`
+
+font-size: 40px;
+font-weight:bold;
+
+`
+
+const Box3 = styled.div`
+
+font-size: 20px;
+font-weight:bold;
+
+`

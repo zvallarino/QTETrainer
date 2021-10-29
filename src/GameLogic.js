@@ -5,7 +5,7 @@ import { ProgressBar } from 'react-bootstrap'
 import styled from 'styled-components';  
 // import LosingScreen from "./LosingScreen.js"
 
-function GameLogic( {RouteSelector, setKillGame, setLosingScreenDecider, loopCounter, setLoopCounter, finalScore, setFinalScore } ) {
+function GameLogic( {RouteSelector, setKillGame, setLosingScreenDecider, loopCounter, setLoopCounter, finalScore, setFinalScore, setVictoryOrClose } ) {
   function randomFirstInput(){
     let randomInput = RouteSelector
       let firstInput = randomInput[Math.floor(Math.random() * randomInput.length)]
@@ -21,11 +21,11 @@ function GameLogic( {RouteSelector, setKillGame, setLosingScreenDecider, loopCou
   // const [finalScore,setFinalScore] = useState(0)
   const [mistakes,setMistakes] = useState(0)
   const [progressbar,setProgressBar] = useState(0)
+  const [onFire,setOnFire] = useState(false)
 
-  let alphabetz = "abcdefghijklmnopqrstuvwxyz"
 
- 
 
+let ProgressBarCounter = 0;
 function gameFunction(cats) {
   if (mainNumber.toUpperCase() === cats.toUpperCase())
   {let alphabetY = RouteSelector
@@ -41,22 +41,28 @@ function gameFunction(cats) {
     setStreakCounter(0)
   } }
 
+
 function StreakCounterSayings(e){
   if (streakcounter >= 5){
     setScore(score => score + 10)
+    setProgressBar(streakcounter * 10)
     console.log('Heating Up')
   } else if ( streakcounter >= 10){
     setScore(score => score + 25)
+    setProgressBar(100)
   }
 }
 
 function SetterOfProgressBar(e){
   if (streakcounter === 0){
     setProgressBar(0)
+    setOnFire(false)
   } else if (streakcounter > 0 && streakcounter <10){
     setProgressBar((cats)=>cats + 10)
+    setOnFire(false)
   } else {
     setProgressBar(100)
+    setOnFire(true)
   }
 }
 // StreakCounterSayings()
@@ -142,6 +148,7 @@ function SetterOfProgressBar(e){
       } else {
         setKillGame(false)
         setLosingScreenDecider(true)
+        setVictoryOrClose(true)
         setTimeRemaining(20)} 
       }
       else {
@@ -163,46 +170,176 @@ setInterval(()=>RandomLetterGenerator1(), 5000)
 
 useEffect(()=>timingFunction(),[])
 
-
-  
+const ProgressBar = (props) => {
   return (
-    <div onKeyDown = {(e)=>console.log(e.target.value)} tabIndex = '0'>
-      {`This is the first Input: ${gamesInput}`}
-      <p></p>
-      <MainButton>
-      {mainNumber.toUpperCase()}
-      </MainButton>
-      <p></p>
-      {`This is the Score: ${score}`}
-      <p></p>
-      {`This is the Mistakes: ${mistakes}`}
-      <p></p>
-      {`This is the Streak Counter: ${streakcounter}`}
-      <p></p>
-      {`This is the progress Counter: ${progressbar}`}
-      <p></p>
-      {`This is the Final Score: ${finalScore}`}
-      <p></p>
-      {`This is the Loop Counter: ${loopCounter}`}
-      <p></p>
-      <h4>{timeRemaining} Seconds Remaining</h4>
-      <label> Input
-      <input type="text" name="name" onChange = {handleChange} value ={userInput} />
-      </label>
-      </div>
+    <div>
+      <Bar>
+        <Fill percentage={props} />
+      </Bar>
+    </div>
   );
 }
 
+const Bar = styled.div`
+  position: relative;
+  height: 500px;
+  width: 20px;
+  background: white;
+  border-radius: 30px;
+  border: 20px solid black;
+  margin: 1rem auto;
+`
+
+
+const Fill = styled.div`
+  background: red;
+  width: 20px;
+  border-radius: inherit;
+  transition: height 0.2s ease-in;
+  height:${`${progressbar}%`};
+  `
+
+
+  
+  return (
+    <WholeThing className = "WholeThing">
+      <BoxOnLeft className = "Box">
+        <Box1>
+          <InnerBox1>
+          {`Score:${score}`}
+          </InnerBox1>
+          <InnerBox2>
+      {`Miss: ${mistakes}`}
+          </InnerBox2>
+        </Box1>
+        <Box2>
+          
+        </Box2>
+      </BoxOnLeft>
+      <SpaceBewteenThings>
+      <MainBox className = "Box">
+      <MainButton>
+      {mainNumber.toUpperCase()}
+      </MainButton>
+      <h4>{timeRemaining} Seconds Remaining</h4>
+      <p></p>
+      <InputBoxZ>
+      <label> 
+      <input type="text" name="name" onChange = {handleChange} value ={userInput} />
+      </label>
+      </ InputBoxZ>
+      </MainBox>
+      </SpaceBewteenThings>
+      <BoxOnRight className = "Box">
+        <Circle className = {onFire?"onFirePlease":""}>
+          {onFire?"FIRE":""}
+        </Circle>
+        <ProgressBar />
+      </BoxOnRight>
+      </WholeThing>
+  );
+}
+
+
+
 export default GameLogic;
 
+const WholeThing = styled.div`
+display:flex;
+flex-direction:row;
+justify-content: space-between;
+
+h4{
+  font-size: 30px;
+  font-weight:bold;
+}
+`
+const MainBox =styled.div`
+display:flex;
+flex-direction:column;
+`
 
 const MainButton = styled.div`
+flex-direction:column;
 font-size:200px;
 background-color:white;
 border: 20px solid black;
+width:250px;
+height:250px;
 border-radius:50%;
 text-align:center;
 `
+
+const BoxOnLeft = styled.div`
+display:flex;
+flex-direction:column;
+width:175px; 
+
+`
+
+const Circle = styled.div`
+border: 20px solid black;
+width:120px;
+height:120px; 
+border-radius: 50%;
+text-weight:bold;
+font-size: 30px;
+color:black;
+text-align:center;
+justify-content:center;
+padding: 10px;
+background-color:white;
+`
+
+const BoxOnRight = styled.div`
+display:flex;
+flex-direction:column;
+`
+
+const InputBoxZ =styled.div`
+height:40px;
+font-size:20pt;
+
+`
+
+
+const InnerBox1 = styled.div`
+font-size: 25px;
+font-weight: bold; 
+background-color:white;
+border: 10px solid black;
+border-radius: 30px;
+margin-top: 100px;
+margin-bottom: 10px;
+`
+
+const InnerBox2 = styled.div`
+font-size: 25px;
+font-weight: bold;
+background-color:white;
+border: 10px solid black;
+border-radius: 30px;
+
+`
+
+const Box1 = styled.div`
+flex-direction:column;
+height:400px;
+`
+
+const Box2 = styled.div`
+height:50%
+border: 10px solid blue;
+`
+
+
+const SpaceBewteenThings = styled.div`
+margin-left:400px;
+margin-right:400px;
+`
+
+
+
   // const [gamesInput2, setGamesInput2] = useState ('')
   // const [gamesInput3, setGamesInput3] = useState ('')
   // const [gamesInput4, setGamesInput4] = useState ('')

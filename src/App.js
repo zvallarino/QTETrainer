@@ -25,7 +25,7 @@ fetch("http://localhost:4000/leaderboard")
       <Route path ="/HowTo">
         <HowTo />
       </Route>
-      <Route exact path ="/Start">
+      <Route exact path ="/">
       <Start/>
       </Route>
       <Route exact path ="/MainMenu">
@@ -36,15 +36,21 @@ fetch("http://localhost:4000/leaderboard")
       </Route>
       <Route path ="/">
       <NavBar>
+      <SpaceBetween>
       <NavLink  to="/HowTo">
-      HOW TO
+      INTRODUCTIONS
       </NavLink>
-      <NavLink  to="/Start">
+      </SpaceBetween>
+      <SpaceBetween>
+      <NavLink  to="/">
           START 
-      </NavLink> 
+      </NavLink>
+      </SpaceBetween> 
+      <SpaceBetween>
       <NavLink  to="/leaderboard">
           LEADERBOARD
       </NavLink>
+      </SpaceBetween>
       </NavBar>
       </Route>
       </Router>
@@ -64,6 +70,11 @@ background-color:white;
 border-top: solid black;
 border-left: solid black;
 border-right: solid black;
+`
+
+const SpaceBetween = styled.div`
+margin-left:350px;
+margin-right:350px;
 `
 
 // const StartStyle = styled.div `

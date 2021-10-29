@@ -29,11 +29,23 @@ function Start() {
 export default Start;
 
 const Starter = styled.div`
-  height:97%;
+  height:97.5%;
   width:100%;
   display:flex; 
   align-items:center;  
   justify-content: center;
+  button{
+    margin:10px 4px; 
+    width:80px;
+    height:40px;
+    color:#fff;
+    font-family:sans-serif;
+    text-transform:uppercase;
+    text-align: center;
+    text-decoration:none;
+    background-color:#FF6766;
+  }
+
 `
 
 // const StarterStyled = styled.div`

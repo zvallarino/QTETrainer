@@ -25,26 +25,52 @@
       "id": 4
     },
     {
-      "name": "sdgf",
-      "category": "Alphabetic",
+      "name": "Zach",
+      "highscore": 4050,
+      "category": "All",
       "id": 5
     },
     {
-      "name": "sdgf",
-      "category": "Alphabetic",
+      "name": "Zach",
+      "highscore": 4050,
+      "category": "All",
       "id": 6
     },
     {
-      "name": "jfal",
-      "highscore": 4690,
-      "category": "Alphabetic",
+      "name": "Zach",
+      "highscore": 5001,
+      "category": "Numeric",
       "id": 7
     },
     {
-      "name": "jfal",
-      "highscore": 4690,
-      "category": "Alphabetic",
+      "name": "Zach",
+      "highscore": 7500,
+      "category": "Numeric",
       "id": 8
+    },
+    {
+      "name": "Zach",
+      "highscore": 1050,
+      "category": "Alphabetic",
+      "id": 9
+    },
+    {
+      "name": "Zach",
+      "highscore": 8505,
+      "category": "Alphabetic",
+      "id": 10
+    },
+    {
+      "name": "Zach",
+      "highscore": 5580,
+      "category": "Alphabetic",
+      "id": 11
+    },
+    {
+      "name": "Zach",
+      "highscore": 9999,
+      "category": "Alphabetic",
+      "id": 12
     }
   ]
 }

@@ -38,16 +38,26 @@ function MainMenu() {
 
   return (
     <MainMenuZ className ="MainMenuZ">
+      <ButtonB className ="buttonB">
       <button onClick = {SetterOfArcadeMode} className = {disappearing? "candy":""}>Arcade</button>
       {Arcade? <ArcadeMode /> : null}
+      </ButtonB>
+      <ButtonB className ="buttonB">
       <button onClick = {SetterOfEndless} className = {disappearing? "candy":""}>Endless</button>
       {Endless? <EndlessPath />: null}
+      </ButtonB>
+      <ButtonB className ="buttonB">
       <button onClick = {SetterOfSettings} className = {disappearing? "candy":""}>Settings </button>
       {settings? <Settings />: null}
+      </ButtonB>
+      <ButtonB className ="buttonB">
       <NavLink to = "/HowTo" > 
       <button className = {disappearing? "candy":""}>How to</button>
       </NavLink>
+      </ButtonB>
+      <ButtonB className ="buttonB">
       <button onClick ={PageReload} className = {disappearing? "candy":""}>Main Menu</button>
+      </ButtonB>
     </MainMenuZ>
   );
 }
@@ -55,6 +65,24 @@ function MainMenu() {
 export default MainMenu;
 
 const MainMenuZ = styled.div`
-display:flex; 
+display:flex;
+height:97.5%; 
 flex-direction:column;
+justify-content: center;
+align-items: center;
+
+button{
+  margin:10px 4px; 
+  width:80px;
+  height:40px;
+  color:#fff;
+  font-family:sans-serif;
+  text-transform:uppercase;
+  text-align: center;
+  text-decoration:none;
+  background-color:#FF6766;
+}
+`
+
+const ButtonB = styled.div`
 `
