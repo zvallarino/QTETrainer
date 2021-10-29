@@ -26,10 +26,18 @@ const HowToZ = styled.div`
 display:flex;
 flex-direction:column;
 h1{
+  font-family: 'Games', sans-serif;
   font-size:100px;
+  font-weight:bold;
+  color:   #FF6766;
+  text-shadow: 8px 8px black;
 }
 p{
+  font-family: 'Games', sans-serif;
   font-size:50px;
+  font-weight:bold;
+  color: #FF6766;
+  text-shadow: 8px 8px black;
 }
 height:97%
 `

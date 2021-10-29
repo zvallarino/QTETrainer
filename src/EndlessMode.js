@@ -167,7 +167,7 @@ const Bar = styled.div`
 
 
 const Fill = styled.div`
-  background: red;
+  background: #FF6766;
   width: 20px;
   border-radius: inherit;
   transition: height 0.2s ease-in;
@@ -197,7 +197,7 @@ const Fill = styled.div`
     <MainButton>
     {mainNumber.toUpperCase()}
     </MainButton>
-    <h4>{timeRemaining} Seconds Remaining</h4>
+    <SpaceBetweenFinalScreen></SpaceBetweenFinalScreen>
     <p></p>
     <InputBoxZ>
     <label> 
@@ -253,16 +253,20 @@ width:175px;
 `
 
 const Circle = styled.div`
+font-family: 'Games', sans-serif;
 border: 20px solid black;
 width:120px;
 height:120px; 
 border-radius: 50%;
-text-weight:bold;
-font-size: 30px;
+font-weight:bold;
+font-size: 60px;
 color:black;
-text-align:center;
-justify-content:center;
-padding: 10px;
+justify-content: center;
+align-content: center;
+flex-direction: column;
+padding-top: 35px;
+padding-left: 20px;
+padding-right: 20px;
 background-color:white;
 `
 
@@ -311,4 +315,8 @@ border: 10px solid blue;
 const SpaceBewteenThings = styled.div`
 margin-left:400px;
 margin-right:400px;
+`
+
+const SpaceBetweenFinalScreen = styled.div`
+height:100px;
 `

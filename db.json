@@ -26,7 +26,7 @@
     },
     {
       "name": "Zach",
-      "highscore": 4050,
+      "highscore": 5000,
       "category": "All",
       "id": 5
     },
@@ -38,19 +38,19 @@
     },
     {
       "name": "Zach",
-      "highscore": 5001,
+      "highscore": 7550,
       "category": "Numeric",
       "id": 7
     },
     {
       "name": "Zach",
-      "highscore": 7500,
+      "highscore": 8500,
       "category": "Numeric",
       "id": 8
     },
     {
       "name": "Zach",
-      "highscore": 1050,
+      "highscore": 7050,
       "category": "Alphabetic",
       "id": 9
     },
@@ -71,6 +71,66 @@
       "highscore": 9999,
       "category": "Alphabetic",
       "id": 12
+    },
+    {
+      "name": "Zach",
+      "highscore": 5580,
+      "category": "Numeric",
+      "id": 13
+    },
+    {
+      "name": "Zach",
+      "highscore": 6080,
+      "category": "Numeric",
+      "id": 14
+    },
+    {
+      "name": "Zach",
+      "highscore": 9020,
+      "category": "Numeric",
+      "id": 15
+    },
+    {
+      "name": "Zach",
+      "highscore": 8020,
+      "category": "Numeric",
+      "id": 16
+    },
+    {
+      "name": "Zach",
+      "highscore": 4450,
+      "category": "All",
+      "id": 17
+    },
+    {
+      "name": "Zach",
+      "highscore": 3800,
+      "category": "All",
+      "id": 18
+    },
+    {
+      "name": "Zach",
+      "highscore": 4600,
+      "category": "All",
+      "id": 19
+    },
+    {
+      "name": "Zach",
+      "highscore": 3700,
+      "category": "All",
+      "id": 20
+    },
+    {
+      "name": "Zach",
+      "highscore": 9710,
+      "category": "Alphabetic",
+      "id": 21
+    },
+    {
+      "name": "Zach",
+      "highscore": 8620,
+      "category": "Alphabetic",
+      "id": 22
     }
   ]
 }

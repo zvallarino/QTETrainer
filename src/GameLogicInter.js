@@ -16,7 +16,7 @@ function GameLogicInter({ RouteSelector, categoryForLeaderBoard}) {
 
   return (
     <>
-    {killGame? <GameLogic setVictoryOrClose = {setVictoryOrClose} loopCounter = {loopCounter} setLoopCounter = {setLoopCounter} setLosingScreenDecider = {setLosingScreenDecider} RouteSelector = {RouteSelector} setKillGame = {setKillGame}  finalScore = {finalScore} setFinalScore = {setFinalScore}/>: <LosingScreenInter setKillGame = {setKillGame} losingScreenDecider = {losingScreenDecider} categoryForLeaderBoard = {categoryForLeaderBoard} victoryOrClose ={victoryOrClose} finalScore = {finalScore}/>}
+    {killGame? <GameLogic setVictoryOrClose = {setVictoryOrClose} victoryOrClose = {victoryOrClose} loopCounter = {loopCounter} setLoopCounter = {setLoopCounter} setLosingScreenDecider = {setLosingScreenDecider} RouteSelector = {RouteSelector} setKillGame = {setKillGame}  finalScore = {finalScore} setFinalScore = {setFinalScore}/>: <LosingScreenInter loopCounter = {loopCounter} setKillGame = {setKillGame} losingScreenDecider = {losingScreenDecider} categoryForLeaderBoard = {categoryForLeaderBoard} victoryOrClose ={victoryOrClose} finalScore = {finalScore}/>}
     </>
   );
 }

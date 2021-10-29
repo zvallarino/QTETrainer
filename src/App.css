@@ -11,9 +11,6 @@ html {
   width:100%;
 }
 
-.onFire {
- background-color: red;
-}
 
 .App-logo {
   /* height: 40vmin; */
@@ -38,7 +35,7 @@ html {
 }
 
 .App-link {
-  color: #61dafb;
+  /* color: #61dafb; */
 }
 
 .candy {

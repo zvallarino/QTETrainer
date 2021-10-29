@@ -55,9 +55,6 @@ function MainMenu() {
       <button className = {disappearing? "candy":""}>How to</button>
       </NavLink>
       </ButtonB>
-      <ButtonB className ="buttonB">
-      <button onClick ={PageReload} className = {disappearing? "candy":""}>Main Menu</button>
-      </ButtonB>
     </MainMenuZ>
   );
 }
@@ -66,7 +63,7 @@ export default MainMenu;
 
 const MainMenuZ = styled.div`
 display:flex;
-height:97.5%; 
+height:97%; 
 flex-direction:column;
 justify-content: center;
 align-items: center;

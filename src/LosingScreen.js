@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react"
-import ArcadeMode from "./ArcadeMode"
+import ArcadeMode from "./ArcadeMode";
+import styled from 'styled-components';
 
 
 
@@ -37,14 +38,35 @@ function LosingScreen({setKillGame}) {
   return (
     <div>
     <p>
-      <h1 className = {disappearing5? "candy":""}>YOU SUCK!</h1>
+      <YouSuck className = {disappearing5? "candy":""}>YOU SUCK</YouSuck>
+      <SpaceBetweenFinalScreen></SpaceBetweenFinalScreen>
       <button onClick = {setteroftryAgain} className = {disappearing5? "candy":""}>TRY AGAIN</button>
     </p>
-    <p>
+    <SpaceBetweenFinalScreen></SpaceBetweenFinalScreen>
+    <TimingFont>
     {disappearing5? null : timeDecreasing}
-    </p>
+    </TimingFont>
     </div>
   );
 }
 
 export default LosingScreen;
+
+const YouSuck = styled.div`
+font-family: 'Games', sans-serif;
+font-size:50px;
+font-weight:bold;
+color: #FF6766;
+text-shadow: 8px 8px black;
+`
+
+const SpaceBetweenFinalScreen = styled.div`
+height:80px;
+`
+
+const TimingFont =  styled.div`
+font-family: 'Games', sans-serif;
+font-size:50px;
+font-weight:bold;
+color: black;
+`
