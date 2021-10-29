@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import ArcadeMode from "./ArcadeMode";
 import styled from 'styled-components';  
 
-function FinalScreen( { finalScore, categoryForLeaderBoard, victoryOrClose, setKillGame} ){
+function FinalScreen( { finalScore, categoryForLeaderBoard, victoryOrClose, setKillGame, loopCounter} ){
 
   const [timeDecreasing, setTimeDecreasing] = useState(10)
   const [tryAgain, setTryAgain] = useState(false)
@@ -69,14 +69,19 @@ function FinalScreen( { finalScore, categoryForLeaderBoard, victoryOrClose, setK
 
     return (
         <>
+        <TextofSaying className = {disappearing5? "candy":""}>
+          {loopCounter > 3 ? "Victory":"Nice Run"}
+          </TextofSaying>
+          <SpaceBetweenFinalScreen></SpaceBetweenFinalScreen>
         <OutterBox>
         <InnerBox1>
-        {`CATEGORY: ${categoryForLeaderBoard}`}
+        {`CATEGORY: ${categoryForLeaderBoard.toUpperCase()}`}
         </InnerBox1>
         <InnerBox2>
         {`FINAL SCORE: ${finalScore}`}
         </InnerBox2>
         </OutterBox>
+        <SpaceBetweenFinalScreen></SpaceBetweenFinalScreen>
         <Form onSubmit={submittingNewScore}>
           
         <Form.Group widths="equal">
@@ -87,12 +92,11 @@ function FinalScreen( { finalScore, categoryForLeaderBoard, victoryOrClose, setK
         <Form.Button>Submit</Form.Button>
         </Form>
         <p>
-      <h1 className = {disappearing5? "candy":""}>{victoryOrClose? "Nice Run":"Victory"}</h1>
       <button onClick = {setteroftryAgain} className = {disappearing5? "candy":""}>TRY AGAIN</button>
       </p>
-      <p>
+      <FontOfTiming>
         {disappearing5? null : timeDecreasing}
-        </p>
+        </FontOfTiming>
         </>
     )
 }
@@ -109,7 +113,21 @@ const InnerBox1 = styled.div`
 
   font-size: 40px;
   font-weight:bold;
+  
+`
 
+const TextofSaying = styled.div`
+
+   font-family: 'Games', sans-serif;
+  font-size:50px;
+  font-weight:bold;
+  color: #FF6766;
+  text-shadow: 8px 8px black;
+
+`
+
+const SpaceBetweenFinalScreen = styled.div`
+height:40px;
 `
 
 
@@ -117,6 +135,7 @@ const InnerBox2 = styled.div`
 
 font-size: 40px;
 font-weight:bold;
+margin-top:10px;
 
 `
 
@@ -124,5 +143,13 @@ const Box3 = styled.div`
 
 font-size: 20px;
 font-weight:bold;
+
+`
+
+const FontOfTiming = styled.div`
+font-family: 'Games', sans-serif;
+font-size:30px;
+font-weight:bold;
+color: black;
 
 `

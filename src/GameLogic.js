@@ -88,7 +88,6 @@ function SetterOfProgressBar(e){
     if (loopCounter === 0){
       if (score >= 1) {
         alert ("Level 2") 
-        console.log("hello")
         setLoopCounter(loopCounter => loopCounter + 1)
         setFinalScore(finalScore + score)
         setScore(0)
@@ -148,10 +147,12 @@ function SetterOfProgressBar(e){
       } else {
         setKillGame(false)
         setLosingScreenDecider(true)
-        setVictoryOrClose(true)
+  
         setTimeRemaining(20)} 
       }
       else {
+        setVictoryOrClose(true)
+        console.log()
         setKillGame(false)
         setLosingScreenDecider(true)
       }
@@ -209,15 +210,14 @@ const Fill = styled.div`
           {`Score:${score}`}
           </InnerBox1>
           <InnerBox2>
-      {`Miss: ${mistakes}`}
+          {`Miss: ${mistakes}`}
           </InnerBox2>
         </Box1>
-        <Box2>
-          
+        <Box2> 
         </Box2>
       </BoxOnLeft>
       <SpaceBewteenThings>
-      <MainBox className = "Box">
+      <MainBox className = "Box Dragon">
       <MainButton>
       {mainNumber.toUpperCase()}
       </MainButton>
@@ -230,7 +230,7 @@ const Fill = styled.div`
       </ InputBoxZ>
       </MainBox>
       </SpaceBewteenThings>
-      <BoxOnRight className = "Box">
+      <BoxOnRight className = "Box Fox">
         <Circle className = {onFire?"onFirePlease":""}>
           {onFire?"FIRE":""}
         </Circle>
@@ -250,8 +250,11 @@ flex-direction:row;
 justify-content: space-between;
 
 h4{
-  font-size: 30px;
+  font-family: 'Games', sans-serif;
+  font-size:30px;
   font-weight:bold;
+  color: #FF6766;
+  text-shadow: 8px 8px black;
 }
 `
 const MainBox =styled.div`
@@ -278,16 +281,20 @@ width:175px;
 `
 
 const Circle = styled.div`
+font-family: 'Games', sans-serif;
 border: 20px solid black;
 width:120px;
 height:120px; 
 border-radius: 50%;
-text-weight:bold;
-font-size: 30px;
+font-weight:bold;
+font-size: 60px;
 color:black;
-text-align:center;
-justify-content:center;
-padding: 10px;
+justify-content: center;
+align-content: center;
+flex-direction: column;
+padding-top: 35px;
+padding-left: 20px;
+padding-right: 20px;
 background-color:white;
 `
 

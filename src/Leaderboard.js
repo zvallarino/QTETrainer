@@ -28,11 +28,25 @@ function Leaderboard({leaderboard}) {
      LeaderBoard
    </h1>
    </LeaderBoardStyle>
+  <Alltitles>
+   <Titles>
+   Alphabetic
+   </Titles>
+   <Titles>
+   Numeric
+     </Titles>
+     <Titles>
+   All
+    </Titles>
+    </Alltitles>
+
    <AllContainers>
+
    <CatsContainer>
    {catsLeaderBoard}
    </CatsContainer>
    <p></p>
+  
    <DogsContainer>
    {DogsLeaderBoard}
    </DogsContainer>
@@ -52,6 +66,24 @@ text-align: center;
 color:   #FF6766;
 font-size: 40px;
 text-shadow: 8px 8px black;
+`
+const Alltitles = styled.div`
+display:flex;
+flex-direction:row;
+
+`
+
+const Titles = styled.div`
+height:20px;
+width:30%;
+flex:1;
+font-family: 'Games', sans-serif;
+font-weight:bold;
+color: #FF6766;
+font-size: 40px;
+text-shadow: 8px 8px black;
+margin-right:90px;
+
 `
 const CatsContainer = styled.div `
  background-color:  #CCF2FF;
