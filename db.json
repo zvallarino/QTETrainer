@@ -131,6 +131,18 @@
       "highscore": 8620,
       "category": "Alphabetic",
       "id": 22
+    },
+    {
+      "name": "Zach",
+      "highscore": 6560,
+      "category": "Numeric",
+      "id": 23
+    },
+    {
+      "name": "zACH",
+      "highscore": 4440,
+      "category": "Numeric",
+      "id": 24
     }
   ]
 }

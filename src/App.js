@@ -39,7 +39,7 @@ fetch("http://localhost:4000/leaderboard")
       <SpaceBetween>
       <NavLink to="/HowTo">
       <LinkStyled>
-      INTRODUCTIONS
+      INSTRUCTIONS
       </LinkStyled>
       </NavLink>
       </SpaceBetween>
